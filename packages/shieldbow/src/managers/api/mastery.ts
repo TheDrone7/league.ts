@@ -35,7 +35,7 @@ export class ChampionMasteryManager {
   ): Promise<ChampionMastery> {
     const opts = parseFetchOptions(this.client, 'championMastery', options);
     const puuid = typeof player === 'string' ? player : player.playerId;
-    const region = typeof player === 'string' ? opts.region ?? this.client.region : player.region;
+    const region = typeof player === 'string' ? (opts.region ?? this.client.region) : player.region;
 
     this.client.logger?.trace(`Fetching champion mastery for PUUID ${puuid} on ${champion}`);
     this.client.logger?.trace('Checking if champion exists.');
@@ -89,7 +89,7 @@ export class ChampionMasteryManager {
     const opts = parseFetchOptions(this.client, 'championMastery', options);
 
     const puuid = typeof player === 'string' ? player : player.playerId;
-    const region = typeof player === 'string' ? opts.region ?? this.client.region : player.region;
+    const region = typeof player === 'string' ? (opts.region ?? this.client.region) : player.region;
 
     this.client.logger?.trace(`Fetching all champion masteries for ${puuid}`);
     const url = `/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}`;
@@ -134,7 +134,7 @@ export class ChampionMasteryManager {
   ): Promise<ChampionMastery[]> {
     const opts = parseFetchOptions(this.client, 'championMastery', options);
     const puuid = typeof player === 'string' ? player : player.playerId;
-    const region = typeof player === 'string' ? opts.region ?? this.client.region : player.region;
+    const region = typeof player === 'string' ? (opts.region ?? this.client.region) : player.region;
 
     this.client.logger?.trace(`Fetching top champion masteries for ${puuid}`);
     const url = `/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}/top?count=${count}`;
@@ -204,7 +204,7 @@ export class ChampionMasteryManager {
     const opts = parseFetchOptions(this.client, 'championMastery', options);
 
     const puuid = typeof player === 'string' ? player : player.playerId;
-    const region = typeof player === 'string' ? opts.region ?? this.client.region : player.region;
+    const region = typeof player === 'string' ? (opts.region ?? this.client.region) : player.region;
 
     this.client.logger?.trace(`Fetching total mastery score for ${puuid}`);
     const url = `/lol/champion-mastery/v4/scores/by-puuid/${puuid}`;
